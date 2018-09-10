@@ -18,7 +18,7 @@
   import Confirm from "@braces/react-confirm"
 
   // ES5
-  var Confirm = require("react-confirm");
+  var Confirm = require("@braces/react-confirm");
   ```
 ## Example
 
