@@ -1,0 +1,44 @@
+{
+  "name": "@braces/react-confirm",
+  "version": "0.0.1",
+  "description": "React confirm dialog HOC",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "build": "npm run clean && tsc",
+    "build-watch": "tsc --watch",
+    "patch-release": "npm version patch && npm publish --access=public && git push --follow-tags",
+    "minor-release": "npm version minor && npm publish --access=public && git push --follow-tags",
+    "major-release": "npm version major && npm publish --access=public && git push --follow-tags",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codebraces/react-confirm.git"
+  },
+  "keywords": [
+    "react",
+    "confirm",
+    "hoc",
+    "alert",
+    "dialog"
+  ],
+  "author": "Hafeez Hamza <hafeez1042@gmail.com> (http://hafeezhamza.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codebraces/react-confirm/issues"
+  },
+  "homepage": "https://github.com/codebraces/react-confirm#readme",
+  "devDependencies": {
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "@braces/validator": "^0.2.1",
+    "@types/react": "^15.5.8",
+    "@types/react-dom": "^15.5.8",
+    "react": "^15.5.8",
+    "react-dom": "^15.5.8"
+  }
+}
