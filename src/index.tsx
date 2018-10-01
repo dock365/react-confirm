@@ -8,7 +8,7 @@ export interface IConfirmDialogProps {
 }
 
 export interface IComponentProps {
-  confirm: (message?: string) => void;
+  confirm: (message?: string, title?: string) => void;
   confirmed: boolean;
 }
 
