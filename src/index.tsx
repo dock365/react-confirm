@@ -2,16 +2,18 @@ import * as React from "react";
 
 export interface IConfirmDialogProps {
   doConfirm: () => void;
+  message?: string;
 }
 
 export interface IComponentProps {
-  confirm: () => void;
+  confirm: (message?: string) => void;
   confirmed: boolean;
 }
 
 export interface IComponentState {
   confirmBox: boolean;
   isConfirmed: boolean;
+  message?: string;
 }
 
 const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentType<P>) => {
@@ -23,6 +25,7 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
         this.state = {
           confirmBox: false,
           isConfirmed: false,
+          message: "",
         }
         this.confirm = this.confirm.bind(this);
         this.onConfirm = this.onConfirm.bind(this);
@@ -31,14 +34,15 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
         return (
           <div>
             <Component confirm={this.confirm} confirmed={this.state.isConfirmed} />
-            {this.state.confirmBox ? <ConfirmDialog doConfirm={this.onConfirm} /> : null}
+            {this.state.confirmBox ? <ConfirmDialog doConfirm={this.onConfirm} message={this.state.message} /> : null}
           </div>
         )
       }
-      public confirm() {
+      public confirm(message?: string) {
         this.setState({
           isConfirmed: false,
           confirmBox: true,
+          message,
         });
       }
 
@@ -47,6 +51,7 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
           isConfirmed: true,
           confirmBox: false,
         });
+        
       }
     }
   }
