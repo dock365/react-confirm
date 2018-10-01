@@ -8,8 +8,8 @@ export interface IConfirmDialogProps {
 }
 
 export interface IComponentProps {
-  confirm: (message?: string, title?: string) => void;
-  confirmed: boolean;
+  confirm?: (message?: string, title?: string) => void;
+  confirmed?: boolean;
 }
 
 export interface IComponentState {
@@ -55,6 +55,8 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
         this.setState({
           isConfirmed: true,
           confirmBox: false,
+          message: "",
+          title: "",
         });
       }
 
@@ -62,6 +64,8 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
         this.setState({
           isConfirmed: false,
           confirmBox: false,
+          message: "",
+          title: "",
         });
       }
     }
