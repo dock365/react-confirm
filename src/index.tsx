@@ -3,6 +3,7 @@ import * as React from "react";
 export interface IConfirmDialogProps {
   doConfirm: () => void;
   message?: string;
+  title?: string;
 }
 
 export interface IComponentProps {
@@ -14,6 +15,7 @@ export interface IComponentState {
   confirmBox: boolean;
   isConfirmed: boolean;
   message?: string;
+  title?: string;
 }
 
 const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentType<P>) => {
@@ -34,15 +36,16 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
         return (
           <div>
             <Component confirm={this.confirm} confirmed={this.state.isConfirmed} />
-            {this.state.confirmBox ? <ConfirmDialog doConfirm={this.onConfirm} message={this.state.message} /> : null}
+            {this.state.confirmBox ? <ConfirmDialog doConfirm={this.onConfirm} message={this.state.message} title={this.state.title} /> : null}
           </div>
         )
       }
-      public confirm(message?: string) {
+      public confirm(message?: string, title?: string) {
         this.setState({
           isConfirmed: false,
           confirmBox: true,
           message,
+          title,
         });
       }
 
