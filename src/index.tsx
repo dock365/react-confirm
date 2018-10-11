@@ -21,9 +21,10 @@ export interface IComponentState {
 
 const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentType<P>) => {
   return <P extends IComponentProps>(Component: React.ComponentType<P>) => {
-    return class extends React.Component<P & IConfirmDialogProps & IComponentProps, IComponentState> {
-      constructor() {
-        super();
+    type ComponentPropsType = P & IConfirmDialogProps & IComponentProps;
+    return class extends React.Component<ComponentPropsType, IComponentState> {
+      constructor(props: ComponentPropsType) {
+        super(props);
 
         this.state = {
           confirmBox: false,
@@ -37,7 +38,7 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
       public render() {
         return (
           <div>
-            <Component confirm={this.confirm} confirmed={this.state.isConfirmed} />
+            <Component {...this.props} confirm={this.confirm} confirmed={this.state.isConfirmed} />
             {this.state.confirmBox ? <ConfirmDialog onConfirm={this.onConfirm} onCancel={this.onCancel} message={this.state.message} title={this.state.title} /> : null}
           </div>
         )
