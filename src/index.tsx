@@ -5,11 +5,13 @@ export interface IConfirmDialogProps {
   onCancel?: () => void;
   message?: string;
   title?: string;
+  data?: any;
 }
 
 export interface IComponentProps {
   confirm?: (message?: string, title?: string) => void;
   confirmed?: boolean;
+  confirmData?: any;
 }
 
 export interface IComponentState {
@@ -17,6 +19,7 @@ export interface IComponentState {
   isConfirmed: boolean;
   message?: string;
   title?: string;
+  data?: any;
 }
 
 const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentType<P>) => {
@@ -30,6 +33,8 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
           confirmBox: false,
           isConfirmed: false,
           message: "",
+          title: "",
+          data: undefined,
         }
         this.confirm = this.confirm.bind(this);
         this.onConfirm = this.onConfirm.bind(this);
@@ -38,17 +43,18 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
       public render() {
         return (
           <div>
-            <Component {...this.props} confirm={this.confirm} confirmed={this.state.isConfirmed} />
-            {this.state.confirmBox ? <ConfirmDialog onConfirm={this.onConfirm} onCancel={this.onCancel} message={this.state.message} title={this.state.title} /> : null}
+            <Component {...this.props} confirm={this.confirm} confirmed={this.state.isConfirmed} confirmData={this.state.data} />
+            {this.state.confirmBox ? <ConfirmDialog onConfirm={this.onConfirm} onCancel={this.onCancel} message={this.state.message} title={this.state.title} data={this.state.data} /> : null}
           </div>
         )
       }
-      public confirm(message?: string, title?: string) {
+      public confirm(message?: string, title?: string, data?: any) {
         this.setState({
           isConfirmed: false,
           confirmBox: true,
           message,
           title,
+          data,
         });
       }
 
@@ -58,6 +64,7 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
           confirmBox: false,
           message: "",
           title: "",
+          data: undefined,
         });
       }
 
@@ -67,6 +74,7 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
           confirmBox: false,
           message: "",
           title: "",
+          data: undefined,
         });
       }
     }
