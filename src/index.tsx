@@ -64,7 +64,6 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
           confirmBox: false,
           message: "",
           title: "",
-          data: undefined,
         });
       }
 
