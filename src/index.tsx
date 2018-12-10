@@ -9,7 +9,7 @@ export interface IConfirmDialogProps {
 }
 
 export interface IComponentProps {
-  confirm?: (message?: string, title?: string) => void;
+  confirm?: (message?: string, title?: string, data?: any) => void;
   confirmed?: boolean;
   confirmData?: any;
 }
