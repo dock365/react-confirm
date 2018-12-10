@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface IConfirmDialogProps {
-  onConfirm: () => void;
+  onConfirm?: () => void;
   onCancel?: () => void;
   message?: string;
   title?: string;
