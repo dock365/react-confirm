@@ -1,51 +1,63 @@
 # React Confirm
-<!-- [![Build Status](https://travis-ci.org/codebraces/react-confirm.svg?branch=master)](https://travis-ci.org/codebraces/react-confirm) -->
-[![npm Version](https://img.shields.io/npm/v/@braces/react-confirm.svg)](https://www.npmjs.com/package/@braces/react-confirm)
+<!-- [![Build Status](https://travis-ci.org/codebraces/reconfirm.svg?branch=master)](https://travis-ci.org/codebraces/reconfirm) -->
+[![npm Version](https://img.shields.io/npm/v/@braces/reconfirm.svg)](https://www.npmjs.com/package/@braces/reconfirm)
 
 
 ## Install
 1 Install react confirm as dependency
   ```bash
   # Using yarn package manager
-  $ yarn add @braces/react-confirm
+  $ yarn add @braces/reconfirm
 
   # Using npm package manager
-  $ npm install --save @braces/react-confirm
+  $ npm install --save @braces/reconfirm
   ```
 2 Import React confirm module
   ```javascript
   // ES6
-  import Confirm from "@braces/react-confirm"
+  import Confirm from "@braces/reconfirm"
 
   // ES5
-  var Confirm = require("@braces/react-confirm");
+  var Confirm = require("@braces/reconfirm");
   ```
 ## Example
 
+#### [CodeSandbox Example Link](https://codesandbox.io/s/r46rpnw49m)
 ```javascript
   import React from "react";
-  import confirm from "@braces/react-confirm";
+  import ReactDOM from "react-dom";
+  import Confirm from "@braces/reconfirm";
 
-  const Component = (props) => {
+  function Component(props) {
     return (
-      <div>
-        <button onClick={props.confirm}>Confirm</button>
-        {props.confirmed ? "Is confirmed" : "Is not confirmed"}
-      </div>
-    );
-  };
-
-  const ConfirmDialog= (props) => {
-    return (
-      <div>
-        <h3>{props.title}</h3>
-        <p>{props.message</p>
-        <button onClick={props.onConfirm}>Confirm</button>
+      <div className="App">
+        <button
+          onClick={() =>
+            props.confirm("Dialog Message", "Dialog Title", "Some Data", data => {
+              alert(data + " Confirmed");
+            })
+          }
+        >
+          Show Confirm
+        </button>
       </div>
     );
   }
 
-  export default confirm(ConfirmDialog)(HomePage)
+  function Dialog(props) {
+    return (
+      <div className="App">
+        <h1>{props.title}</h1>
+        <h2>{props.message}</h2>
+        <button onClick={props.onConfirm}>Confirm</button>
+        <button onClick={props.onCancel}>Cancel</button>
+      </div>
+    );
+  }
+
+  const App = Confirm(Dialog)(Component);
+  const rootElement = document.getElementById("root");
+  ReactDOM.render(<App />, rootElement);
 ```
 
 ## Properties
