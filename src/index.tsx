@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface IConfirmDialogProps {
-  onConfirm: () => void;
+  onConfirm?: () => void;
   onCancel?: () => void;
   message?: string;
   title?: string;
@@ -9,7 +9,7 @@ export interface IConfirmDialogProps {
 }
 
 export interface IComponentProps {
-  confirm?: (message?: string, title?: string) => void;
+  confirm?: (message?: string, title?: string, data?: any) => void;
   confirmed?: boolean;
   confirmData?: any;
 }

@@ -1,6 +1,6 @@
 {
-  "name": "@braces/react-confirm",
-  "version": "0.10.1",
+  "name": "@dock365/reconfirm",
+  "version": "0.10.4",
   "description": "React confirm dialog HOC",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codebraces/react-confirm.git"
+    "url": "git+https://github.com/dock365/reconfirm.git"
   },
   "keywords": [
     "react",
@@ -26,9 +26,9 @@
   "author": "Hafeez Hamza <hafeez1042@gmail.com> (http://hafeezhamza.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codebraces/react-confirm/issues"
+    "url": "https://github.com/dock365/reconfirm/issues"
   },
-  "homepage": "https://github.com/codebraces/react-confirm#readme",
+  "homepage": "https://github.com/dock365/reconfirm#readme",
   "devDependencies": {
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
