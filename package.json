@@ -1,6 +1,6 @@
 {
   "name": "@dock365/reconfirm",
-  "version": "0.10.4",
+  "version": "0.11.0",
   "description": "React confirm dialog HOC",
   "main": "dist/index.js",
   "scripts": {
