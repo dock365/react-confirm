@@ -43,10 +43,10 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
       }
       public render() {
         return (
-          <div>
+          <React.Fragment>
             <Component {...this.props} confirm={this.confirm} confirmed={this.state.isConfirmed} confirmData={this.state.data} />
             {this.state.confirmBox ? <ConfirmDialog onConfirm={this.onConfirm} onCancel={this.onCancel} message={this.state.message} title={this.state.title} data={this.state.data} /> : null}
-          </div>
+          </React.Fragment>
         )
       }
       public confirm(message?: string, title?: string, data?: any, onConfirmAction?: Function) {
