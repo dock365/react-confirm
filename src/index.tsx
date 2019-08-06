@@ -9,7 +9,13 @@ export interface IConfirmDialogProps {
 }
 
 export interface IComponentProps {
-  confirm?: (message?: string, title?: string, data?: any, onConfirmAction?: Function) => void;
+  confirm?: (
+    message?: string,
+    title?: string,
+    data?: any,
+    onConfirmAction?: Function,
+    onCancelAction?: Function,
+  ) => void;
   confirmed?: boolean;
   confirmData?: any;
 }
@@ -26,7 +32,8 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
   return <P extends IComponentProps>(Component: React.ComponentType<P>) => {
     type ComponentPropsType = P & IConfirmDialogProps & IComponentProps;
     return class extends React.Component<ComponentPropsType, IComponentState> {
-      public onConfirmAction: Function = () => {};
+      public onConfirmAction: Function = () => { };
+      public onCancelAction: Function = () => { };
       constructor(props: ComponentPropsType) {
         super(props);
 
@@ -49,9 +56,12 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
           </React.Fragment>
         )
       }
-      public confirm(message?: string, title?: string, data?: any, onConfirmAction?: Function) {
+      public confirm(message?: string, title?: string, data?: any, onConfirmAction?: Function, onCancelAction?: Function) {
         if (onConfirmAction)
           this.onConfirmAction = onConfirmAction;
+
+        if (onCancelAction)
+          this.onCancelAction = onCancelAction;
         this.setState({
           isConfirmed: false,
           confirmBox: true,
@@ -72,6 +82,7 @@ const Confirm = <P extends IConfirmDialogProps>(ConfirmDialog: React.ComponentTy
       }
 
       public onCancel() {
+        if (this.onCancelAction) this.onCancelAction(this.state.data);
         this.setState({
           isConfirmed: false,
           confirmBox: false,
